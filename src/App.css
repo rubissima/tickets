@@ -3,5 +3,5 @@
 }
 
 body {
-  /* @apply  */
+  @apply p-8;
 }

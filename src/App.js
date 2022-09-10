@@ -30,7 +30,7 @@ const App = () => {
   }
 
   return (
-    <div className="App p-8">
+    <div className="App">
       <Header />
       <h2>Find something to do</h2>
       <SearchBar searchQuery={searchQuery} setSeachQuery={setSeachQuery}/>
