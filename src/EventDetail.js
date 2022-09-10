@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
 import moment from 'moment';
+import Loading from './Loading'
 
 const EventDetail = () => {
   const params = useParams();
   const eventId = params.eventId;
   const [eventDetails, setEventDetails] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     // Fetch data using event ID passed from ResultCard
     fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?&apikey=GBChOj9W932J4InIgxbN1SA53t2aV8Nu`)
     .then((response) => response.json())
     .then((data) => {
       setEventDetails(data);
+      setIsLoading(false);
     })
     .catch((err) => {
        console.log(err.message);
@@ -23,6 +27,9 @@ const EventDetail = () => {
   return (
     <div>
       <Header />
+      { isLoading &&
+        <Loading />
+      }
       { eventDetails &&
         <div>
           <div className="hero min-h-screen bg-base-200 align-top">

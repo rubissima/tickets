@@ -52,9 +52,7 @@ const App = () => {
         </div>
       }
       {isLoading &&
-        <div className="flex justify-center">
-          <Loading />
-        </div>
+        <Loading />
       }
       {!isLoading && !isEmpty &&
         <ResultGrid events={events} resultsHeading={resultsHeading}/>
