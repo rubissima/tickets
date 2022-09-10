@@ -14,9 +14,8 @@ const App = () => {
     fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${slug}&apikey=GBChOj9W932J4InIgxbN1SA53t2aV8Nu`)
     .then((response) => response.json())
     .then((data) => {
-       //console.log({data});
+      // Check if data object exists and make array
        const eventsArr = data?._embedded?.events;
-       //console.log({eventsArr});
        setEvents(eventsArr);
     })
     .catch((err) => {
@@ -24,6 +23,7 @@ const App = () => {
     });
   }, [slug])
 
+  // Pass input to keyword parameter
   const handleSubmit = () => {
     setSlug(searchQuery);
     setResultsHeading(`Here's what we found for ${searchQuery}:`);
@@ -32,7 +32,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <h2>Find something to do</h2>
+      <h2 className="text-xl">Find something to do</h2>
       <SearchBar searchQuery={searchQuery} setSeachQuery={setSeachQuery}/>
       <button onClick={handleSubmit} className="btn">Search</button>
       <ResultGrid events={events} resultsHeading={resultsHeading} />

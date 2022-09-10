@@ -11,11 +11,8 @@ import EventDetail from './EventDetail'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  // <React.StrictMode>
-  //   <PageRouter />
-  // </React.StrictMode>
 
+root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/tickets" element={<App />} />

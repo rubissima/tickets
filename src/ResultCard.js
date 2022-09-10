@@ -15,7 +15,7 @@ const ResultCard = ({event}) => {
                 <Link
                     to={`/tickets/${eventId}`}
                 >
-                    <button className="btn btn-primary">Check it out</button>
+                    <button className="btn btn-secondary">Check it out</button>
                 </Link>
                 </div>
             </div>

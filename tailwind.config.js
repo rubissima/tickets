@@ -5,9 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    screens: {
+      'tablet': '850px',
+      'desktop': '1200px'
+    }
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["cupcake"],
+    themes: ["lofi"],
   }
 }

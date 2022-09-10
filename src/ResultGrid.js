@@ -2,14 +2,13 @@ import React from 'react';
 import ResultCard from './ResultCard';
 
 const ResultGrid = ({events, resultsHeading}) => {
-    console.log({events});
     return (
         <div className="center">
             <h2 className="py-4">{resultsHeading}</h2>
-            <div className="flex flex-wrap justify-around">
+            <div className="grid grid-flow-row grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4 justify-items-center">
                 {events && events.map((event, index) => {
                     return (
-                        <ResultCard event={event} />
+                        <ResultCard event={event} key={event.id} />
                     )
                 })}
             </div>

@@ -7,9 +7,9 @@ const EventDetail = () => {
   const params = useParams();
   const eventId = params.eventId;
   const [eventDetails, setEventDetails] = useState(undefined);
-  const thisShow = eventDetails._embedded.venues[0];
 
   useEffect(() => {
+    // Fetch data using event ID passed from ResultCard
     fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?&apikey=GBChOj9W932J4InIgxbN1SA53t2aV8Nu`)
     .then((response) => response.json())
     .then((data) => {
@@ -19,22 +19,21 @@ const EventDetail = () => {
        console.log(err.message);
     });
   }, [eventId])
-  console.log({eventDetails});
 
   return (
     <div>
       <Header />
       { eventDetails &&
         <div>
-          <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-              <img src={eventDetails.images[1].url} className="max-w rounded-lg shadow-2xl" alt="{eventDetails.name}" />
+          <div className="hero min-h-screen bg-base-200 align-top">
+            <div className="hero-content flex-col desktop:flex-row-reverse">
+              <img src={eventDetails.images[1].url} className="max-w-lg rounded-lg shadow-2xl" alt="{eventDetails.name}" />
               <div>
-                <h1 className="text-5xl font-bold">{eventDetails.name} at {thisShow.name}</h1>
+                <h1 className="text-5xl font-bold">{eventDetails.name} at {eventDetails._embedded.venues[0].name}</h1>
                 <p className="pt-4 font-bold">{moment(eventDetails.dates.start.dateTime).format("dddd, MMM DD, YYYY [at] h:mm a")}</p>
-                <p className="pt-1 pb-4">{thisShow.address.line1}, {thisShow.city.name}, {thisShow.state.stateCode}</p>
-                <a href="{thisShow.url}">
-                  <button className="btn btn-primary">Take my money</button>
+                <p className="pt-1 pb-4">{eventDetails._embedded.venues[0].address.line1}, {eventDetails._embedded.venues[0].city.name}, {eventDetails._embedded.venues[0].state.stateCode}</p>
+                <a href={eventDetails._embedded.venues[0].url}>
+                  <button className="btn btn-primary">Take my money!</button>
                 </a>
                 <div className="collapse">
                   <input type="checkbox" /> 
@@ -42,8 +41,10 @@ const EventDetail = () => {
                     Venue accessibility info
                   </div>
                   <div className="collapse-content">
-                    <p className="pb-2">{thisShow.ada.adaPhones}<br />{thisShow.ada.adaHours}</p>
-                    <p>{thisShow.accessibleSeatingDetail}</p>
+                    {eventDetails._embedded.venues[0].ada.adaPhones ??
+                      <p className="pb-2">{eventDetails._embedded.venues[0].ada.adaPhones}<br />{eventDetails._embedded.venues[0].ada.adaHours}</p>
+                    }
+                    <p>{eventDetails._embedded.venues[0].accessibleSeatingDetail}</p>
                   </div>
                 </div>
               </div>
