@@ -13,7 +13,7 @@ const ResultCard = ({event}) => {
                 <p>{moment(event.dates.start.dateTime).format("dddd, MMM DD, YYYY [at] h:mm a")}</p>
                 <div className="card-actions justify-end">
                 <Link
-                    to={`/${eventId}`}
+                    to={`/tickets/${eventId}`}
                 >
                     <button className="btn btn-primary">Check it out</button>
                 </Link>

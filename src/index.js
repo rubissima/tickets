@@ -18,8 +18,8 @@ root.render(
 
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path=":eventId" element={<EventDetail />} />
+      <Route path="/tickets" element={<App />} />
+      <Route path="/tickets/:eventId" element={<EventDetail />} />
     </Routes>
   </BrowserRouter>
 );
