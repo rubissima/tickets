@@ -5,6 +5,6 @@
 body {
   @apply p-8;
 }
-.App .btn.btn-secondary {
+.btn.btn-secondary {
   background-color: #F28C18;
 }
