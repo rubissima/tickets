@@ -12,7 +12,7 @@ const ResultCard = ({event}) => {
                 <p>{event._embedded.venues[0].name}</p>
                 <p>{moment(event.dates.start.dateTime).format("dddd, MMM DD, YYYY [at] h:mm a")}</p>
                 <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-primary">Check it out</button>
                 </div>
             </div>
         </div>
