@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const ResultCard = ({event}) => {
-
-    console.log(event);
+    const eventId = event.id;
     return (
         <div className="card w-96 bg-base-100 shadow-xl image-full">
             <figure><img src={event.images[0].url} alt={event.name} /></figure>
@@ -12,7 +12,11 @@ const ResultCard = ({event}) => {
                 <p>{event._embedded.venues[0].name}</p>
                 <p>{moment(event.dates.start.dateTime).format("dddd, MMM DD, YYYY [at] h:mm a")}</p>
                 <div className="card-actions justify-end">
-                <button className="btn btn-primary">Check it out</button>
+                <Link
+                    to={`/${eventId}`}
+                >
+                    <button className="btn btn-primary">Check it out</button>
+                </Link>
                 </div>
             </div>
         </div>
