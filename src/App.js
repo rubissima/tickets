@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Header from './Header'
-import SearchBar from './SearchBar';
-import ResultGrid from './ResultGrid';
-import Loading from './Loading';
+import Header from './components/Header'
+import SearchBar from './components/SearchBar';
+import ResultGrid from './components/ResultGrid';
+import Loading from './components/Loading';
 import './App.css';
 
 const App = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './ticket-logo.png';
+import logo from '../ticket-logo.png';
 import { Link } from 'react-router-dom';
 
 const Header = () => {

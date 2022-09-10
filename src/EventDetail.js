@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './Header';
+import Header from './components/Header';
 import moment from 'moment';
-import Loading from './Loading'
+import Loading from './components/Loading'
 
 const EventDetail = () => {
   const params = useParams();
