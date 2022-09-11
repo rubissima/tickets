@@ -7,7 +7,7 @@ import Loading from './components/Loading'
 const EventDetail = () => {
   const params = useParams();
   const eventId = params.eventId;
-  const [eventDetails, setEventDetails] = useState(undefined);
+  const [eventDetails, setEventDetails] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -39,6 +39,9 @@ const EventDetail = () => {
                 <h1 className="text-5xl font-bold">{eventDetails?.name} at {eventDetails?._embedded?.venues[0].name}</h1>
                 <p className="pt-4 font-bold">{moment(eventDetails?.dates?.start?.dateTime).format("dddd, MMM DD, YYYY [at] h:mm a")}</p>
                 <p className="pt-1 pb-4">{eventDetails?._embedded?.venues[0]?.address?.line1}, {eventDetails?._embedded?.venues[0]?.city?.name}, {eventDetails?._embedded?.venues[0]?.state?.stateCode}</p>
+                { eventDetails.priceRanges[0] && 
+                  <p className="pt-1 pb-4">Price range: {(eventDetails?.priceRanges[0]?.min).toFixed(2)} - {(eventDetails?.priceRanges[0]?.max).toFixed(2)} {eventDetails?.priceRanges[0]?.currency}</p>
+                }
                 <a href={eventDetails?._embedded?.venues[0]?.url}>
                   <button className="btn btn-primary">Take my money!</button>
                 </a>
